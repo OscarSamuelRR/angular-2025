@@ -11,12 +11,34 @@ function multiply(firstNumber: number, secondNumber?: number, base:number = 2) {
 }
 
 
-const result: number = addNumbers(1,2);
-const result2: string = addNumbersArrow(1, 2);
-const multiplyResult: number = multiply(5);
+// const result: number = addNumbers(1,2);
+// const result2: string = addNumbersArrow(1, 2);
+// const multiplyResult: number = multiply(5);
 
-console.log(result); //Imprime resultado
+// console.log(result); //Imprime resultado
 
-console.log({ result, result2, multiplyResult });//Imprime como objeto
+// console.log({ result, result2, multiplyResult });//Imprime como objeto
+interface Character {
+    name: string;
+    hp: number;
+    showHp: () => void;
+
+}
+
+const healCharacter = (chracter: Character, amount: number) => {
+    chracter.hp += amount;
+}
+
+const strider: Character = {
+    name: "Aragon",
+    hp: 50,
+    showHp() {
+        console.log(`Puntos de vida ${this.hp}`);
+    }
+}
+
+healCharacter(strider, 50);
+
+strider.showHp();
 
 
