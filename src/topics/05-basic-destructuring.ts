@@ -1,6 +1,6 @@
 interface AudioPlayer{
     audioVolume: number;
-    sonDuration: number;
+    songDuration: number;
     song: string;
     details: Details;
 }
@@ -22,8 +22,18 @@ const audioPlayer: AudioPlayer = {
 
 const song  = '70%';
 
-const { song: anotherSong, duration:songDuration } = audioPlayer;
+const { song: anotherSong, songDuration: duration, details } = audioPlayer;
 
-console.log(`Song: ${song}`);
-console.log(`Duration: ${audioPlayer.duration}`);
-console.log(`Author: ${audioPlayer.details.author}`);
+const { author: authorName, year: yearDetails } = audioPlayer.details; //Solución propia
+
+const { author } = details; //Solución sugerida
+
+const dbz: string [] = ['Goku', 'Vegeta', 'Trunks'];
+
+console.log(dbz[2]);
+
+
+// console.log(`Song: ${anotherSong}`);
+// console.log(`Duration: ${duration}`);
+// console.log(`Author: ${authorName}`);
+// console.log(`Año: ${yearDetails}`);
