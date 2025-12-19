@@ -30,7 +30,13 @@ const { author } = details; //Solución sugerida
 
 const dbz: string [] = ['Goku', 'Vegeta', 'Trunks'];
 
-console.log(dbz[2]);
+const [p1, p2, trunks] = dbz;
+
+// const [, , trunks = 'NO encontrado'] = dbz; Ignorar variables en caso de solo querer un valor
+
+// const trunks = dbz[3] || 'No hay personaje' Muy usado afuera
+
+console.log('Personaje 3:', p1);
 
 
 // console.log(`Song: ${anotherSong}`);
