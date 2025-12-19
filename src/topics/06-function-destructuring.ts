@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
     description: string;
     price: number;
 }
@@ -13,20 +13,32 @@ const tablet: Product = {
     price: 250.0
 }
 
-interface TaxCalculationOptions {
+export interface TaxCalculationOptions {
     tax: number;
     products: Product[];
 }
 
+export interface taxCalculationResults{
+    total:number;
+    tax: number;
+}
 
-function taxCalculation(options: TaxCalculationOptions): number[] {
+
+export function taxCalculation(options: TaxCalculationOptions): taxCalculationResults {
     let total = 0;
-
-    options.products.forEach(product => {
-        total += product.price;
+    //Destructuración en arreglo
+    options.products.forEach(({ price }) => {
+        total += price;
     });
+
+    let tax = total * options.tax;
+
+    let result:taxCalculationResults = {
+        total,
+        tax
+    }  
     
-    return[total, total * options.tax];
+    return result;
 }
 
 const shoppingCart = [phone, tablet];
@@ -37,7 +49,21 @@ const options: TaxCalculationOptions = {
     products: shoppingCart
 }
 
-const result = taxCalculation(options);
+const { total: totalResul, tax: taxResult } = taxCalculation(options);
 
-console.log('Total', result[0]);
-console.log('Tax', result[1]);
+
+const {tax: desTax, products:desProducts } = options
+
+const [ph, tb] = desProducts;
+
+const {description:phDescription, price:phPrice} = ph;
+const { description: tbDescription, price: tbPrice } = tb;
+
+// const { total:totalResul, tax:taxResult } = result; Mi solución 
+
+console.log('Producto 1, descripción: ', phDescription, ', precio: ', phPrice);
+console.log('Producto 2, descripción: ', tbDescription, ', precio: ', tbPrice);
+
+
+console.log('Total', totalResul);
+console.log('Tax', taxResult);
